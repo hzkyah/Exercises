@@ -39,16 +39,16 @@ def shade_neighbours(matrix, row, col, shade_value):
         for coord in peers:
             if matrix[coord[0]][coord[1]] == 1:
                 shade_neighbours(matrix, coord[0], coord[1], shade_value)
-    
+
 def matrix_function(matrix):
     length = len(matrix)
     width = len(matrix[0])
     next_block = 1
-    for i in range(length):
-        for j in range(width):
-            if matrix[i][j] == 1:
+    for i in range(width):
+        for j in range(length):
+            if matrix[j][i] == 1:
                 next_block += 1
-                shade_neighbours(matrix, i, j, next_block)
+                shade_neighbours(matrix, j, i, next_block)
     return matrix
 
 m = [[0, 1, 0, 0, 0, 0, 1],
